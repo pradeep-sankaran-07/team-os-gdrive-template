@@ -1,0 +1,6 @@
+# Partner roster. Production and channel partners: vendors we buy from and agencies that resell.
+# Mirrors accounts/_customer-list.csv deliberately, with the OPPOSITE confidentiality direction.
+# A partner's own costs live in partners/<slug>/profile.md. Our own margin and what we charge customers NEVER appear anywhere under partners/.
+name,slug,status,domains,aliases,type,regions,key_contact,owner
+Ferrowind Data,ferrowind-data,active,ferrowind.example,Ferrowind,data-vendor,global,Ana Reyes,tobias-frank
+Fieldpost Agency,fieldpost-agency,active,fieldpost.example,Fieldpost,reseller,EU,Jonas Holm,priya-nair

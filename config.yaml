@@ -1,0 +1,232 @@
+# config.yaml - every environment-specific value for this Team OS.
+# Nothing environment-specific is hardcoded anywhere else. If a skill, routine
+# or document needs a path, an id, a model or a person, it reads it from here.
+#
+# The comments in this file carry decision rationale and dates on purpose. Six
+# months later the question is never "what is this set to", it is "why", and the
+# answer belongs next to the value.
+#
+# DEMO VALUES. Everything below describes the fictional Acme Corp. Replace it
+# with your own during install; the `install-team-os` skill walks you through it.
+
+# Who this OS belongs to. The installer fills these in first; several generated
+# artifacts read them, so they are the one thing to set before anything else.
+company_name: Acme Corp
+company_domain: acme.example
+repo_name: acme-os
+environment: demo                      # demo | production
+
+# Who runs the daily admin routine. A first-class key on purpose: this used to
+# be read out of the optional `knowledgebase` block, which the installer tells
+# adopters to delete when they have no second knowledge drive, taking the
+# routine's ownership statement with it.
+admin:
+  runner: tobias-frank                 # must be a Drive Manager, and needs the local mount
+  backup: maya-chen                    # takes over when the runner is away; check this quarterly
+
+# ---------------------------------------------------------------------------
+# Where the OS physically lives, and how people reach it.
+# ---------------------------------------------------------------------------
+drive:
+  shared_drive_name: acme-os
+  shared_drive_id: "PLACEHOLDER_shared_drive_id"
+  # The everyday engagement model. The Drive for Desktop mount is primary: it
+  # surfaces the Shared Drive as an ordinary local folder, so tools read and
+  # write files directly with no upload step. The Drive connector is the
+  # fallback for phones and headless sessions, and it is READ + CREATE ONLY.
+  engagement: "drive-for-desktop mount; connector is the fallback"
+  # Per machine. Each person mounts the Shared Drive under their own account, so
+  # this is a shape, never a literal path committed to the repo.
+  mount_path_shape: "<your Google Drive mount>/Shared drives/acme-os"
+  transcripts_location: "each person's own Gmail and Drive, see integrations/gmail-drive.md"
+
+# ---------------------------------------------------------------------------
+# Access control. Two groups, and the folder layout follows from them.
+# See ACCESS-CONTROL.md for the reasoning; this block is the machine-readable
+# copy that routines and the installer check against.
+# ---------------------------------------------------------------------------
+permissions:
+  groups:
+    team:   "acme-os-team@acme.example"      # every team member
+    admins: "acme-os-admins@acme.example"    # the small admin group
+  model:
+    team_base_role: Viewer                   # read-only everywhere by default
+    team_writable_folders:                   # team is Content Manager on exactly these
+      - accounts/
+      - outputs/
+      - _ops/
+    admin_role: Manager                      # root files, .claude/, .agents/, .codex/, company/, product/, integrations/, partners/, portfolio/
+    permanent_delete: admins only            # Content Managers can trash, never purge
+  # The single manual step in onboarding. Everything else derives itself.
+  new_joiner: "add them to the team group; do this BEFORE sending START-HERE, so their first session can write"
+
+# ---------------------------------------------------------------------------
+# Per-person scratch area. NOT a source of truth.
+# ---------------------------------------------------------------------------
+outputs:
+  path: "outputs/<person-slug>/"
+  unassigned: "outputs/_unassigned/"   # only when even the email cannot be derived
+  # Slug resolution is derived FROM THE SESSION, never gated on this file:
+  #   1. take the work email out of the Drive mount path
+  #   2. if it matches a `people` entry below, reuse that entry's slug
+  #   3. otherwise derive one (kebab-case name, else the email local part) and
+  #      create the folder on first save - never block, never ask
+  #   4. use `unassigned` only when even the email cannot be derived
+  # The roster only OVERRIDES the derived slug. It never blocks a person.
+
+# ---------------------------------------------------------------------------
+# Where account and prospect records come from, and how an inbound item is
+# matched to one.
+# ---------------------------------------------------------------------------
+sources:
+  accounts_roster: accounts/_customer-list.csv    # the operative watch list
+  partners_roster: partners/_partner-list.csv
+  crm: "PLACEHOLDER_crm_export_or_url"            # human origin; the CSV is the operative mirror
+  matching:
+    match_by: [email_domain, fuzzy_name]
+    create_only_from_roster: true                 # an unknown sender never creates an account
+    exclude_personal_domains:
+      - gmail.com
+      - googlemail.com
+      - outlook.com
+      - hotmail.com
+      - yahoo.com
+      - icloud.com
+      - proton.me
+
+# ---------------------------------------------------------------------------
+# Live systems. Queried, never mirrored into files. See integrations/.
+# ---------------------------------------------------------------------------
+work_tracker:
+  name: "PLACEHOLDER_tracker"          # e.g. a Linear / Jira / Asana workspace
+  mcp_url: "PLACEHOLDER_mcp_url"
+  workspace: "PLACEHOLDER_workspace"
+  teams: []                            # fill during install
+  support_via_tracker: true            # support tickets reached through the tracker, not connected separately
+
+# ---------------------------------------------------------------------------
+# The one data-carrying folder, and the single named exception to the money rule.
+# Per-customer figures are allowed in portfolio/ and nowhere else, and a company-wide
+# total is banned there too. See CLAUDE.md "Operating norms".
+# ---------------------------------------------------------------------------
+customer_dashboard:
+  output: "portfolio/dashboard.html"
+  crosswalk: "portfolio/crosswalk.csv"
+  revenue_csv: "portfolio/revenue.csv"
+  revenue_meta: "portfolio/revenue.meta.json"
+  snapshots: "portfolio/snapshots/"
+  raw_drops: "portfolio/_raw/"
+  currency_assumed: "USD"
+  scoring_version: "v1-default"        # bump when scoring changes, so old snapshots are not misread
+  revenue_stale_days: 45               # past this, derived risk bands are SUPPRESSED, not shown stale
+  snapshot_retention:
+    keep_all_days: 21
+    keep_mondays_weeks: 26
+    keep_first_of_month: forever
+  schedule:
+    cadence: "weekdays 06:30 local"
+    runner: tobias-frank               # needs the local mount to write
+    backup: maya-chen                  # must be a Drive Manager: this writes portfolio/
+  # Drive's web preview does not run JavaScript, so a plain link to the built
+  # dashboard renders blank. apps-script/serve-dashboard.gs serves it instead.
+  apps_script:
+    file_id: "PLACEHOLDER_dashboard_file_id"
+    title: "Acme Corp - customer dashboard"
+    live_url: ""                       # the /exec url, filled in after deployment
+    # Access: a named group, NEVER "anyone in the organisation". This file holds
+    # per-customer values, and org-wide access hands them to every account in
+    # the Workspace, including people with no business on the Shared Drive.
+    audience_group: "acme-os-team@acme.example"
+
+# Publishing a per-person adoption table is a decision, not a default. Off means
+# the daily digest reports system health only, with no named productivity
+# comparison. See ACCESS-CONTROL.md, "What this measures about people".
+adoption_reporting:
+  per_person_table: false
+  retain_session_rows_days: 90         # after this, rows are deleted, not archived
+
+# ---------------------------------------------------------------------------
+# A second, read-only Drive indexed as a routing map. Optional: delete this
+# block and integrations/knowledgebase.md if you have no such drive.
+# ---------------------------------------------------------------------------
+knowledgebase:
+  shared_drive_id: "PLACEHOLDER_knowledgebase_drive_id"
+  map: "integrations/knowledgebase.md"
+  refresh:
+    cadence: daily
+    runner: tobias-frank
+    backup: maya-chen                  # must be a Drive Manager: this writes integrations/
+    service_account: ""                # set this to de-personalise the job; no other change needed
+
+# ---------------------------------------------------------------------------
+# Model ids live here and nowhere else. Skills and routines reference this block
+# rather than hardcoding an id, so a model change is one edit.
+# ---------------------------------------------------------------------------
+default_model: claude-opus-5
+routines:
+  daily-team-os-admin:
+    model: claude-sonnet-5             # cost-efficient tier; this pass is mechanical
+  ingest-customer-context:
+    model: claude-sonnet-5
+  refresh-knowledgebase-map:
+    model: claude-sonnet-5
+
+# ---------------------------------------------------------------------------
+# Skill ownership. This list is the ONLY thing that grants a non-admin the right
+# to update a skill: adding an entry here is itself an admin edit. A folder
+# appearing under someone's outputs can never install itself.
+# See .claude/routines/daily-team-os-admin.md Task 4.
+# ---------------------------------------------------------------------------
+skill_owners:
+  - skill: account-review
+    owner: sam-okafor
+    drop_path: "outputs/sam-okafor/_skills/account-review/"
+    auto_promote: full                 # full | prose-only
+    upstream: "maintained by the CSM who runs it every week"
+  - skill: acme-brand
+    owner: maya-chen
+    drop_path: "outputs/maya-chen/_skills/acme-brand/"
+    auto_promote: prose-only           # text changes apply; asset changes escalate
+    upstream: "brand assets are agreed offline, then dropped here"
+
+skill_sync:
+  state: "_ops/skill-sync/state.json"
+  backups: "_ops/skill-sync/backups/"
+  max_drop_mb: 5
+
+# ---------------------------------------------------------------------------
+# The roster. `role` and `owns` are written by a human; `name`, `email` and
+# `slug` may be appended automatically by the daily roster reconcile.
+# `owns` is a flat tag list, used to answer "who should I ask about X".
+# ---------------------------------------------------------------------------
+people:
+  - name: Maya Chen
+    role: CEO
+    email: maya.chen@acme.example
+    slug: maya-chen
+    owns: [company, marketing]
+  - name: Diego Ramirez
+    role: Head of Product
+    email: diego.ramirez@acme.example
+    slug: diego-ramirez
+    owns: [product, engineering]
+  - name: Priya Nair
+    role: Head of Sales
+    email: priya.nair@acme.example
+    slug: priya-nair
+    owns: [sales]
+  - name: Lena Vossen
+    role: Account Executive
+    email: lena.vossen@acme.example
+    slug: lena-vossen
+    owns: [sales, prospects]
+  - name: Sam Okafor
+    role: Customer Success Manager
+    email: sam.okafor@acme.example
+    slug: sam-okafor
+    owns: [customer-success, onboarding]
+  - name: Tobias Frank
+    role: RevOps, and the Team OS admin
+    email: tobias.frank@acme.example
+    slug: tobias-frank
+    owns: [operations, team-os]

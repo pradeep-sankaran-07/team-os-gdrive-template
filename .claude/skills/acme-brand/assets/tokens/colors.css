@@ -1,0 +1,16 @@
+/* The single source of truth for Acme Corp colour.
+   Every skill reads these names. Nothing redefines a value locally.
+   Replace these with your own palette during install. */
+:root {
+  --acme-primary:      #2E6F5E;  /* headings, primary fills, links */
+  --acme-primary-dark: #1C4A3E;  /* hover, depth */
+  --acme-accent:       #8A4F7D;  /* emphasis only, never a background */
+  --acme-ink:          #1B2321;  /* body text */
+  --acme-muted:        #6B7774;  /* secondary text, chart greys */
+  --acme-surface:      #FFFFFF;  /* page */
+  --acme-surface-alt:  #F3F6F5;  /* table stripes, callouts */
+  --acme-line:         #D7DEDC;  /* rules, borders */
+  --acme-ok:           #2E7D5B;
+  --acme-warn:         #B7791F;
+  --acme-risk:         #B3413A;
+}

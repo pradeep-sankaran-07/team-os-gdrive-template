@@ -1,0 +1,16 @@
+# Copy to `_ops/.scrub-terms.local` and put your own terms in it.
+# That file is gitignored: it never gets published, which is the whole point.
+#
+# One term per line, case-insensitive, matched as a literal substring.
+# Blank lines and comment lines are ignored. A line that is only a hex value,
+# such as the third example below, is treated as a term rather than a comment.
+#
+# Put here anything your copy must never leak: a client name, an internal
+# codename, a brand hex value, a mailing list, a partner you are under NDA with.
+#
+# Do NOT commit the filled-in version. A list of terms you are trying to hide is
+# itself a disclosure: it names each one AND asserts that each one is sensitive.
+clientcorp
+internal-codename
+D4F0C2
+announce-all@

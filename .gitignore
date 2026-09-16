@@ -1,0 +1,6 @@
+.DS_Store
+*.swp
+.claude/settings.local.json
+_ops/.scrub-terms.local
+_ops/sessions/*.csv
+outputs/_health/

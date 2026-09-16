@@ -1,0 +1,5 @@
+{
+  "_comment": "Managed by .claude/routines/daily-team-os-admin.md Task 4. Do not hand-edit.",
+  "_hash_recipe": "From the drop folder root: `find . -type f ! -name '.DS_Store' | sort`, then for each file concatenate its relative path followed by its bytes, and pipe the whole stream to `shasum -a 256`. This recipe is written down because hashes recorded under an unspecified procedure are not reproducible, and every later run then reads as 'changed'.",
+  "skills": {}
+}

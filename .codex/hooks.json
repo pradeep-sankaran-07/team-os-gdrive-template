@@ -1,0 +1,28 @@
+{
+  "_comment": "Codex-side registration of the same two hooks as .claude/settings.json. The scripts are byte-identical copies; keep them that way (SETUP.md names the byte-compare as a verification step). The path resolves from the working directory on purpose: each person mounts the Shared Drive under their own account, so an absolute path must never land in this shared file. NOTE: repo-local hook support varies by Codex version and this file may be inert in yours. Session logging does not depend on it: the session-marker rule in AGENTS.md covers every surface, hooks or not. See SETUP.md.",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(pwd)/.codex/hooks/log-session.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$(pwd)/.codex/hooks/log-session.sh\"",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}

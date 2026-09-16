@@ -1,0 +1,15 @@
+/* Typography tokens. One family for display and body, plus an office fallback.
+   The office fallback exists only because .docx and .xlsx cannot reliably embed
+   a web font; it is not a third brand face and must not appear anywhere else. */
+:root {
+  --acme-font-display: "Inter", system-ui, sans-serif;   /* headings */
+  --acme-font-text:    "Inter", system-ui, sans-serif;   /* body */
+  --acme-font-office:  Arial, sans-serif;                /* .docx / .xlsx only */
+
+  --acme-size-h1: 28px;
+  --acme-size-h2: 20px;
+  --acme-size-h3: 16px;
+  --acme-size-body: 14px;
+  --acme-size-small: 12px;
+  --acme-leading: 1.5;
+}

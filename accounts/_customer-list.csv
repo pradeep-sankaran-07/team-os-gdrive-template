@@ -1,0 +1,10 @@
+# Account roster. The operative watch list for the ingest routine; config.yaml sources.accounts_roster points here.
+# Every row is in scope. Churned rows stay, marked, so history keeps working.
+# MONEY IS NOT HERE. Commercial terms live only in accounts/<slug>/profile.md under '## Commercial'.
+# domains and aliases are ;-separated. domains are best-effort and self-heal on a confident match; empty means match on name and aliases only.
+name,slug,stage,domains,aliases,signed_date,employees,hq_country,category,owner
+Northwind Software,northwind-software,active,northwind.example,Northwind;Northwind Sw,2025-11-04,200,US,dev-tools,sam-okafor
+Calderwick Media,calderwick-media,active,calderwick.example,Calderwick,2026-01-20,120,US,martech,sam-okafor
+Ashgrove Analytics,ashgrove-analytics,onboarding,ashgrove.example;ashgroveanalytics.example,Ashgrove,2026-08-28,60,DE,data,sam-okafor
+Harlowe Security,harlowe-security,prospect,harlowe.example,Harlowe;Harlowe Sec,,300,GB,security,lena-vossen
+Harborline Logistics,harborline-logistics,churned,harborline.example,Harborline,2025-06-16,450,NL,logistics,priya-nair

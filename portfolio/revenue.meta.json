@@ -1,0 +1,20 @@
+{
+  "_comment": "Provenance sidecar for revenue.csv. Every data drop gets one. Assumptions that are not confirmed are written down rather than resolved silently.",
+  "_note": "The raw drop it names is not shipped with this template; only the normalised file is. In a real install _raw/ holds the untouched original.",
+  "source_file": "_raw/2026-09-01-billing-export.csv",
+  "exported_at": "2026-09-01T08:14:00Z",
+  "exported_by": "tobias-frank",
+  "normalised_at_utc": "2026-09-01T09:02:00Z",
+  "rows_in": 9,
+  "rows_out": 9,
+  "rows_dropped": 0,
+  "companies": 4,
+  "period_min": "2026-06",
+  "period_max": "2026-08",
+  "currency_assumed": "USD",
+  "currency_confirmed": false,
+  "includes_usage": "unknown",
+  "roster_conflicts": [
+    "Ashgrove Analytics appears with a zero value: onboarding, first invoice not raised. Not an error."
+  ]
+}

@@ -1,0 +1,10 @@
+# Per-account ingest window for one person. Written by ingest-customer-context,
+# one row per account, immediately after that account finishes rather than at the
+# end of the run, so a run that dies halfway still made progress.
+# A blank first_swept_at means the all-time seed has not happened yet.
+slug,first_swept_at,last_refresh_at
+northwind-software,2026-09-01,2026-09-11
+calderwick-media,2026-09-01,2026-09-04
+ashgrove-analytics,2026-09-02,2026-09-09
+harborline-logistics,2026-09-01,2026-09-08
+harlowe-security,,

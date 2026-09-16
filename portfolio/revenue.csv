@@ -1,0 +1,12 @@
+# Normalised value export. Long format, one row per company per month.
+# Demo data, invented. Per-customer only: never derive or store a total across companies from this file.
+company,month,value
+Northwind Software,2026-06,4200
+Northwind Software,2026-07,4200
+Northwind Software,2026-08,4650
+Calderwick Media,2026-06,2520
+Calderwick Media,2026-07,2520
+Calderwick Media,2026-08,2520
+Ashgrove Analytics,2026-08,0
+Harborline Logistics,2026-06,2800
+Harborline Logistics,2026-07,2800

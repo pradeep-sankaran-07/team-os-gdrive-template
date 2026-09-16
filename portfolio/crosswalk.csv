@@ -1,0 +1,9 @@
+# One customer per row, mapped across every system. Rows are never silently dropped:
+# anything out of scope is kept, prefixed _excluded_, with a written exclude_reason.
+# Where two systems disagree, record it in conflicts rather than picking a winner in code.
+slug,display_name,roster_status,owner,sales_owner,tracker_projects,tier,renewal_date,account_folder,confidence,exclude_reason,conflicts,last_verified
+northwind-software,Northwind Software,active,sam-okafor,priya-nair,onboarding-northwind,1,2026-11-04,accounts/northwind-software,high,,,2026-09-11
+calderwick-media,Calderwick Media,active,sam-okafor,lena-vossen,,2,2027-01-20,accounts/calderwick-media,high,,,2026-09-04
+ashgrove-analytics,Ashgrove Analytics,onboarding,sam-okafor,lena-vossen,onboarding-ashgrove,2,2027-08-27,accounts/ashgrove-analytics,medium,,roster says onboarding; tracker project already marked live,2026-09-09
+harborline-logistics,Harborline Logistics,churned,priya-nair,priya-nair,,3,,accounts/harborline-logistics,high,,,2026-07-31
+_excluded_harlowe-security,Harlowe Security,prospect,lena-vossen,lena-vossen,,,,accounts/harlowe-security,high,not a customer yet; prospects are not in the portfolio view,,2026-09-08
