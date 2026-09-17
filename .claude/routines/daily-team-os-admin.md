@@ -18,8 +18,8 @@ This is a first-class key on purpose. It used to live inside the optional
 to delete, taking the routine's own ownership statement with it.
 
 **Where it runs.** It requires the **local Drive for Desktop mount**. The Drive
-connector is read and create only: it cannot edit an existing file, so it can
-neither close out nor self-heal. If the mount is unavailable, stop and say so.
+connector cannot edit an existing file, and on some products cannot create one
+either, so it can neither close out nor self-heal. If the mount is unavailable, stop and say so.
 Do not attempt a connector-based workaround.
 
 ## Two invariants

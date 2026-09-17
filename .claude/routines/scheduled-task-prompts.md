@@ -31,7 +31,7 @@ Suggested schedule: every day, early morning local time.
 >
 > Context (this run starts fresh with no memory of any prior chat):
 > - Open the Team OS folder at the LOCAL Google Drive for Desktop mount: `<absolute path to your mount>/Shared drives/acme-os`
-> - If that local mount is not available, STOP and report it. The Drive connector is read and create only and cannot edit existing files, so the routine cannot close out or self-heal without the mount. Do not attempt connector-based workarounds.
+> - If that local mount is not available, STOP and report it. The Drive connector cannot edit existing files, and on some products cannot create them either, so the routine cannot close out or self-heal without the mount. Do not attempt connector-based workarounds.
 > - Read `.claude/routines/daily-team-os-admin.md` and follow it EXACTLY, running ALL its tasks in order. The routine file is the single source of truth for what the daily pass does; do not assume a fixed task count, it grows over time. Do not let a failure in one task stop the others.
 > - You run as `config.yaml` `admin.runner`, who is a Drive Manager: the role that can write root files, `.claude/` and `integrations/`.
 > - Model: use the tier defined in `config.yaml` `routines.daily-team-os-admin.model`. `config.yaml` is the single source of model ids.

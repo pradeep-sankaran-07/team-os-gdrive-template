@@ -68,8 +68,8 @@ anywhere else.
 ## Which agent tools
 
 Designed for Cowork first, because that is where most of a non-technical team
-works: no hooks, no guaranteed shell, sometimes read-and-create-only file
-access. Everything team-wide works under those constraints. Claude Code and
+works: no hooks, no guaranteed shell, and file access that may be read-only in
+practice depending on the product. Everything team-wide works under those constraints. Claude Code and
 Codex work from the same folder. Claude Code also gets the session hook; on
 Codex, check whether repo-local hooks run in your version, and fall back to the
 session-marker rule, which works everywhere. A

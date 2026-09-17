@@ -80,7 +80,8 @@ which entry looks stale so it can be corrected.
 - A folder: search title = '<name>' and mimeType = the Drive folder type.
 
 ## What this surface can and cannot do
-The connector can read files and create new ones. That is all. It cannot edit,
+This surface passed the write probe, so it can read files and create new ones.
+That is all it can do: it cannot edit,
 move, rename or delete an existing file, and it cannot run code, so it cannot
 build documents, spreadsheets, slides or PDFs, and cannot generate images.
 
