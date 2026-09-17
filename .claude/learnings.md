@@ -77,6 +77,16 @@ than adding a second one.
   full of "nothing happened" is unreadable, but a day with no entry at all is
   indistinguishable from a day the routine did not run. (2026-09-16)
 
+- **Probe what a surface can write, not only what it can read.** Why: two AI
+  products can both read this folder correctly and differ completely in what
+  they can create. One writes ordinary files; another creates only native Google
+  Docs and cannot produce a `.md` at all. Because the reading half works, the
+  setup looks healthy, and the failure only surfaces when somebody goes looking
+  for a file that was never written. Capability also varies by product rather
+  than by device, so a laptop session can fail where a phone session succeeds.
+  Test it once per product during install and write down the answer.
+  (2026-09-17, found by an early adopter of this template.)
+
 - **Do not end a finished task with an unnecessary question.** Why: a clean
   summary is the finish. A trailing "want me to also..." makes the person do work
   to close the loop. (2026-09-16)

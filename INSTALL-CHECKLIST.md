@@ -72,7 +72,8 @@ about people".
 |---|---|---|---|
 | todo | Drive for Desktop installed, folder visible under Shared drives | each person | the folder opens locally |
 | todo | Cowork pointed at the folder | each person | "how does this work" is answered from `CLAUDE.md` |
-| todo | Mobile project created with the generated instruction block | admin | a phone session answers an account question by file id |
+| todo | Write-probe run for every AI product the team uses, result recorded | admin | the table in `CONNECTOR-SURFACES.md` is filled in |
+| todo | Connector project created per product, with the matching block (A or B) | admin | a session answers an account question by file id |
 | todo | CLI set up for the admins and engineers | those people | a session row appears in `_ops/sessions/` |
 
 ## Phase 7 - Automation

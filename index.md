@@ -16,7 +16,7 @@ file.** Do not scan the whole tree.
 | [ACCESS-CONTROL.md](ACCESS-CONTROL.md) | The two groups, and why the layout follows from them |
 | [INSTALL.md](INSTALL.md) / [INSTALL-CHECKLIST.md](INSTALL-CHECKLIST.md) | Setting it up, and what is still missing |
 | [SETUP.md](SETUP.md) | Multi-tool wiring, and what is honestly not portable |
-| [MOBILE.md](MOBILE.md) | The connector surface, and its limits |
+| [CONNECTOR-SURFACES.md](CONNECTOR-SURFACES.md) | Connector surfaces, what each product can write, and the probe |
 | [_ops/log.md](_ops/log.md) | Append-only history |
 | [_ops/STATUS.md](_ops/STATUS.md) | Current state and freshness |
 

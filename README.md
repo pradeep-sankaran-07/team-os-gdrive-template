@@ -42,7 +42,7 @@ agent tools read and write directly, with no push step.
 | A new joiner on a team already using it | [START-HERE.md](START-HERE.md) |
 | Wondering why the folders are arranged like this | [ACCESS-CONTROL.md](ACCESS-CONTROL.md) |
 | Wiring up a second agent tool | [SETUP.md](SETUP.md) |
-| Setting it up on a phone | [MOBILE.md](MOBILE.md) |
+| Setting it up on a phone | [CONNECTOR-SURFACES.md](CONNECTOR-SURFACES.md) |
 | Looking for a specific file | [index.md](index.md) |
 
 Behaviour rules are in [CLAUDE.md](CLAUDE.md). Every environment-specific value
@@ -73,7 +73,7 @@ access. Everything team-wide works under those constraints. Claude Code and
 Codex work from the same folder. Claude Code also gets the session hook; on
 Codex, check whether repo-local hooks run in your version, and fall back to the
 session-marker rule, which works everywhere. A
-phone reaches it through the Drive connector; see [MOBILE.md](MOBILE.md).
+phone reaches it through the Drive connector; see [CONNECTOR-SURFACES.md](CONNECTOR-SURFACES.md).
 
 ## The fiction
 

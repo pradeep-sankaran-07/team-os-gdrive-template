@@ -222,7 +222,7 @@ Seed one account fully as the worked example, so the team can see the shape.
    surface for most of the team.
 3. **Mobile**: create a project and paste in the instruction block generated
    from `references/mobile-project-template.md`. It needs real file and folder
-   ids, so generate it after Phase 3, when the files exist. See `MOBILE.md`.
+   ids, so generate it after Phase 3, when the files exist. See `CONNECTOR-SURFACES.md`.
 4. **CLI** (Claude Code, Codex): optional, for the admins and engineers.
 
 ## Phase 7 - Automation

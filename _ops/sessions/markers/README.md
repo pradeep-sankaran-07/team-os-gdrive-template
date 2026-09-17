@@ -19,6 +19,13 @@ therefore a record of everyone's working hours, evenings and weekends included.
 There is no document content to review, and there is still personal data here.
 See ACCESS-CONTROL.md, "What this measures about people".
 
+**Some surfaces will never appear here, and that is expected.** A connector that
+cannot create a `.md` file cannot write a marker either, so sessions on it leave
+no trace. Record which products those are in `CONNECTOR-SURFACES.md`, and do not
+go hunting for a file that was never written. It also means the adoption count
+is a floor rather than a total, which is why the daily routine is forbidden from
+reading an absent signal as absent work.
+
 The daily admin routine rolls these into `../cowork@markers.csv`, deduping on
 person and date, then trashes them. A marker whose filename will not parse stays
 here and gets one log line, rather than being guessed at.

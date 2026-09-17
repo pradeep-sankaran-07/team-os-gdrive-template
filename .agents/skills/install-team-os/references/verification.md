@@ -68,7 +68,9 @@ context layer is not seeded and every skill will produce generic output.
 | Probe | Passes when |
 |---|---|
 | **no shell** Open the folder in Cowork and ask "how does this Team OS work?" | It answers from `CLAUDE.md` and `index.md` |
-| **no shell** Start a session on the phone project and ask for one account's status | It answers, having read by file id, with no search |
+| **no shell** Create `probe.md` in `_ops/sessions/markers/` from each product's connector | You know, per product, whether it creates a real `.md`, a Google Doc, or nothing. Delete the probe afterwards and record it in `CONNECTOR-SURFACES.md` |
+| **no shell** Start a connector session and ask for one account's status | It answers, having read by file id, with no search |
+| **no shell** On a product that failed the probe, ask it to write up a call | It returns the text in the reply and names the folder, and does not claim to have saved anything |
 | Open the folder in a CLI and run any command | A row appears in `_ops/sessions/<user>@<host>.csv` |
 
 ## Phase 7 - Automation

@@ -86,7 +86,7 @@ is files. The more infrastructure this needs, the fewer teams can run it.
 ## Prefer to do it by hand
 
 Everything the skill does is also written down. [ACCESS-CONTROL.md](ACCESS-CONTROL.md)
-has the grants, [SETUP.md](SETUP.md) has the tool wiring, [MOBILE.md](MOBILE.md)
+has the grants, [SETUP.md](SETUP.md) has the tool wiring, [CONNECTOR-SURFACES.md](CONNECTOR-SURFACES.md)
 has the phone, and `.claude/routines/scheduled-task-prompts.md` has the
 scheduled tasks. `INSTALL-CHECKLIST.md` works fine as a document you tick off
 yourself.
